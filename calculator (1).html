@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+
+        }
+
+        table {
+            border-radius: 5%;
+
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border-radius: 2%;
+            background-color: yellow;
+        }
+
+        input[type="button"] {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgb(255, 194, 80);
+        }
+    </style>
+</head>
+
+<body>
+    <table bgcolor="aqua" cellspacing="10">
+        <tr>
+            <td colspan="4">
+                <input type="text" id="input" readonly placeholder="CALCULATOR">
+            </td>
+        </tr>
+        <tr>
+            <td><input type="button" value="C" onclick="clear1()"></td>
+            <td><input type="button" value="%" onclick="action('%')"></td>
+            <td><input type="button" value="_"></td>
+            <td><input type="button" value="/" onclick="action('/')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="7" onclick="cal_val(7)"></td>
+            <td><input type="button" value="8" onclick="cal_val(8)"></td>
+            <td><input type="button" value="9" onclick="cal_val(9)"></td>
+            <td><input type="button" value="*" onclick="action('*')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="4" onclick="cal_val(4)"></td>
+            <td><input type="button" value="5" onclick="cal_val(5)"></td>
+            <td><input type="button" value="6" onclick="cal_val(6)"></td>
+            <td><input type="button" value="-" onclick="action('-')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="1" onclick="cal_val(1)"></td>
+            <td><input type="button" value="2" onclick="cal_val(2)"></td>
+            <td><input type="button" value="3" onclick="cal_val(3)"></td>
+            <td><input type="button" value="+" onclick="action('+')"></td>
+        </tr>
+        <tr>
+            <td><input type="button" value="00" onclick="cal_val('00')"></td>
+            <td><input type="button" value="0" onclick="cal_val(0)"></td>
+            <td><input type="button" value="." onclick="cal_val('.')"></td>
+            <td><input type="button" value="=" onclick="ans()"></td>
+        </tr>
+    </table>
+
+    <script>
+        var f_val,s_val,s
+        function cal_val(n) {
+            document.getElementById('input').value += n
+        }
+        function action(sign) {
+            f_val = document.getElementById('input').value
+            document.getElementById('input').value = ''
+            s = sign
+        }
+        function ans() {
+            s_val = document.getElementById('input').value
+
+            if (s == '+') {
+                cal_ans = parseFloat(f_val) + parseFloat(s_val);
+            }
+
+            if (s == '-') {
+                cal_ans = parseFloat(f_val) - parseFloat(s_val);
+            }
+
+            if (s == '/') {
+                cal_ans = parseFloat(f_val) / parseFloat(s_val);
+            }
+
+            if (s == '*') {
+                cal_ans = parseFloat(f_val) * parseFloat(s_val);
+            }
+
+            if (s == '%') {
+                cal_ans = parseFloat(f_val) / 100 * parseFloat(s_val);
+            }
+
+            document.getElementById('input').value = cal_ans;
+
+
+        }
+        function clear1() {
+            document.getElementById('input').value = ''
+        }
+    </script>
+</body>
+
+</html>
